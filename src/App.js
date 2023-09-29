@@ -1,6 +1,6 @@
 
 import './App.css';
-//import { Planet } from './Planet';
+import { Planet } from './Planet';
 
 
 function App() {
@@ -27,13 +27,7 @@ function App() {
   );
 }
 
-const Planet= (props)=>{
-  return (
-    <div className="App">
-    {props.isgasplanet && <h1>This is a Gas Planet: {props.name}</h1>}
-  </div>
-  );
-};
+
 
 
 export default App;
