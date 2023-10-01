@@ -1,6 +1,7 @@
 
 import './App.css';
 import { useState } from 'react';
+import {Task} from './Task'
 
 
 function App() {
@@ -13,12 +14,16 @@ const handleChange=(event)=>{
 }
 
 const addTask=()=>{
-  setTodolist([...todoList,newTask]);
+  const task={
+    id: todoList.length===0? 1 : todoList[todoList.length-1].id +1,
+    taskName : newTask
+  }
+  setTodolist([...todoList,task]);
 }
 
-const handleDelete=(taskName)=>{
+const handleDelete=(id)=>{
   //const newtodoList= todoList.filter((task)=> taskName !== task)
-  setTodolist(todoList.filter((task)=> taskName !== task));
+  setTodolist(todoList.filter((task)=> task.id !== id));
 }
 
   return (
@@ -28,12 +33,15 @@ const handleDelete=(taskName)=>{
           <button onClick={addTask}>Add Task</button>
       </div>
       <div clsssName="list">
-          {todoList.map((task,key)=>{
-            return (
-            <div> 
-              <h1 key={key}>{task}</h1>
-              <button onClick={() => handleDelete(task)}>Delete</button>
-            </div>);
+          {todoList.map((task)=>{
+           return (
+            <Task 
+              taskName={task.taskName}  
+              id={task.id} 
+              deleteTask={handleDelete}
+              />
+           );
+
           })}
       </div>
     
