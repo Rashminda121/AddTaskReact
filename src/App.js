@@ -16,14 +16,8 @@ const addTask=()=>{
   setTodolist([...todoList,newTask]);
 }
 
-const deleteTask=(taskName)=>{
-  const newtodoList = todoList.filter ((task)=>{
-    if (task === taskName){
-      return false;
-    }else{
-      return true;
-    }
-  })
+const handleDelete=(taskName)=>{
+  const newtodoList= todoList.filter((task)=> { return taskName !== task ; })
   setTodolist(newtodoList);
 }
 
@@ -34,11 +28,11 @@ const deleteTask=(taskName)=>{
           <button onClick={addTask}>Add Task</button>
       </div>
       <div clsssName="list">
-          {todoList.map((task)=>{
+          {todoList.map((task,key)=>{
             return (
             <div> 
-              <h1>{task}</h1>
-              <button oncClick={() => deleteTask(task)}>x</button>
+              <h1 key={key}>{task}</h1>
+              <button onClick={() => handleDelete(task)}>Delete</button>
             </div>);
           })}
       </div>
