@@ -17,8 +17,8 @@ const addTask=()=>{
 }
 
 const handleDelete=(taskName)=>{
-  const newtodoList= todoList.filter((task)=> { return taskName !== task ; })
-  setTodolist(newtodoList);
+  //const newtodoList= todoList.filter((task)=> taskName !== task)
+  setTodolist(todoList.filter((task)=> taskName !== task));
 }
 
   return (
