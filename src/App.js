@@ -23,7 +23,7 @@ const deleteTask=(taskName)=>{
     }else{
       return true;
     }
-  });
+  })
   setTodolist(newtodoList);
 }
 
