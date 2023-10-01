@@ -16,7 +16,8 @@ const handleChange=(event)=>{
 const addTask=()=>{
   const task={
     id: todoList.length===0? 1 : todoList[todoList.length-1].id +1,
-    taskName : newTask
+    taskName : newTask,
+    completed: false
   }
   setTodolist([...todoList,task]);
 }
@@ -24,6 +25,18 @@ const addTask=()=>{
 const handleDelete=(id)=>{
   //const newtodoList= todoList.filter((task)=> taskName !== task)
   setTodolist(todoList.filter((task)=> task.id !== id));
+}
+
+const completeTask=(id)=>{
+  setTodolist(
+    todoList.map((task)=>{
+      if(task.id ===id){
+        return {...task,completed:true};
+      }else{
+        return task;
+      }
+    })
+  )
 }
 
   return (
@@ -39,6 +52,8 @@ const handleDelete=(id)=>{
               taskName={task.taskName}  
               id={task.id} 
               deleteTask={handleDelete}
+              complete={task.completed}
+              completeTask={completeTask}
               />
            );
 
